@@ -1,0 +1,73 @@
+/* Glassmorphism Navbar */
+.navbar {
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Button Style */
+.btn-custom {
+    background-color: #B16EC7; /* Purple */
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-custom:hover {
+    background-color: #FCDB02; /* Yellow highlight */
+    color: #FFFFFF;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+}
+
+/* Navbar Link Hover */
+.navbar-nav .nav-link:hover {
+    background-color: rgba(177, 110, 199, 0.2); /* Purple */
+    color: #FCDB02 !important; /* Yellow highlight */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth Fade-In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Input Field Styling */
+.input-group .form-control:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+/* Search Icon inside the input */
+.input-group-text {
+    background-color: #B16EC7; /* Purple */
+    border: none;
+    border-radius: 8px;
+}
+
+.input-group-text i {
+    color: white;
+}
+
+/* Toggler Button Animation */
+.navbar-toggler {
+    transition: transform 0.3s ease;
+}
+.navbar-toggler:active {
+    transform: rotate(90deg);
+}
+
+/* Smooth Collapse/Expand Animation */
+.collapse {
+    transition: all 0.4s ease-in-out;
+}

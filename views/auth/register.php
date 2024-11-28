@@ -69,7 +69,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
+            
             <button type="submit" class="btn btn-primary">Register</button>
+            <button type="reset" class="btn btn-secondary">Clear</button> <!-- Clear Button -->
         </form>
 
         <p class="mt-3">Already have an account? <a href="login.php">Login here</a></p>

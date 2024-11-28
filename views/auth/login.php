@@ -43,6 +43,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "User not found.";
     }
 }
+
+// Handle logout
+if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
+    // Destroy the session to log the user out
+    session_unset();
+    session_destroy();
+    // Redirect back to the login page after logout
+    header('Location: login.php');
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <?php include '../common/navbar.php'; ?>
-    
+
     <div class="container mt-5">
         <h2>Login</h2>
 
@@ -73,7 +84,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
+            <button type="reset" class="btn btn-secondary">Clear</button>
         </form>
+
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <!-- Logout Button - Only visible if user is logged in -->
+            <div class="mt-3">
+                <a href="login.php?logout=true" class="btn btn-danger">Logout</a>
+            </div>
+        <?php endif; ?>
     </div>
 
     <?php include '../common/footer.php'; ?>
