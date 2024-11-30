@@ -16,30 +16,6 @@
         <p>Explore the best properties for buying, selling, or renting!</p>
     </main>
 
-    <!-- Additional Sections -->
-    <main>
-        <div class="image-banner">
-            <p>Image</p>
-        </div>
-        <div class="options">
-            <div class="option">
-                <div class="icon">Img</div>
-                <p>Buy a home</p>
-            </div>
-            <div class="option">
-                <div class="icon">Img</div>
-                <p>Sell a home</p>
-            </div>
-            <div class="option">
-                <div class="icon">Img</div>
-                <p>Rent a home</p>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Nestly. All rights reserved.</p>
-    </footer>
+    
 </body>
 </html>

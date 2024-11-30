@@ -15,7 +15,8 @@
         </div>
 
         <!-- Registration Form -->
-        <form action="functions/signup.php" method="POST">
+        <form action="lib/functions/registration_submit.php" method="POST">
+
             <label for="username">User Name</label>
             <input type="text" id="username" name="username" placeholder="Enter your name" required>
 
@@ -25,9 +26,7 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
-            <label for="confirm_password">Confirm Password</label>
-            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
-
+           
             <!-- Form Buttons -->
             <div class="form-buttons">
                 <button type="submit" class="btn-submit">Submit</button>
