@@ -1,0 +1,205 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    line-height: 1.8;
+    background-color: #f5f5f5; /* Soft light gray */
+    color: #444; /* Darker text for better readability */
+    overflow-x: hidden;
+}
+
+/* Smooth Transitions */
+* {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Header Navigation Bar */
+header {
+    background: linear-gradient(135deg, #FF5C8D, #FF8D5C); /* Bold and vibrant gradient */
+    padding: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header nav {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 40px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+header nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2); /* Soft white hover effect */
+    transform: scale(1.1); /* Subtle zoom */
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    margin-top: 15px;
+    background-color: rgba(255, 255, 255, 0.8); /* Light, semi-transparent white background */
+    border-radius: 50px;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.search-bar form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 15px 25px;
+    border: 2px solid #FF5C8D; /* Matching border color */
+    border-radius: 50px 0 0 50px;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-bar input:focus {
+    border-color: #FF8D5C; /* Soft focus color */
+    box-shadow: 0 0 10px rgba(255, 142, 120, 0.5);
+}
+
+.search-bar button {
+    padding: 15px 25px;
+    border: none;
+    background-color: #FF5C8D; /* Vibrant button color */
+    color: #fff;
+    border-radius: 0 50px 50px 0;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.search-bar button:hover {
+    background: linear-gradient(135deg, #FF5C8D, #FF8D5C); /* Hover gradient */
+    transform: translateY(-2px);
+}
+
+/* Main Section */
+main {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+/* Image Banner */
+.image-banner {
+    background: linear-gradient(120deg, #FFB4A2, #E5989B); /* Soft pastel gradient */
+    height: 220px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Options Section */
+.options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.option {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    width: 220px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.option:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.option .icon {
+    background-color: #FF5C8D; /* Bold, vibrant icon background */
+    color: #fff;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+}
+
+.option p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #FF5C8D, #FF8D5C); /* Matching footer gradient */
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top: 2px solid #FFB4A2;
+    font-size: 14px;
+}
+
+/* Form Buttons */
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Link to Home Page */
+.link-to-home p {
+    font-size: 16px;
+}
+
+.link-to-home a {
+    color: #FF5C8D;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-to-home a:hover {
+    text-decoration: underline;
+    color: #FF8D5C;
+    transform: scale(1.05);
+}
