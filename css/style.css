@@ -1,4 +1,7 @@
-/* General Reset */
+
+
+/*registration*/
+
 * {
     margin: 0;
     padding: 0;
@@ -9,270 +12,144 @@
 body {
     font-family: 'Roboto', Arial, sans-serif;
     line-height: 1.8;
-    background-color: #f5f5f5; /* Soft light gray */
-    color: #444; /* Darker text for better readability */
+    background: url('images/home.jpg') no-repeat center center fixed; /* Add background image */
+    background-size: cover; /* Ensure the image covers the entire screen */
     overflow-x: hidden;
-}
-
-/* Smooth Transitions */
-* {
-    transition: all 0.3s ease-in-out;
-}
-
-/* Header Navigation Bar */
-header {
-    background: linear-gradient(135deg, #FF5C8D, #FF8D5C); /* Bold and vibrant gradient */
-    padding: 20px 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-header nav {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-header nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    gap: 40px;
-}
-
-header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    padding: 12px 25px;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 30px;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-header nav ul li a:hover {
-    background: rgba(255, 255, 255, 0.2); /* Soft white hover effect */
-    transform: scale(1.1); /* Subtle zoom */
-}
-
-/* Search Bar */
-.search-bar {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 25px;
-    margin-top: 15px;
-    background-color: rgba(255, 255, 255, 0.8); /* Light, semi-transparent white background */
-    border-radius: 50px;
-    width: 80%;
-    margin: 20px auto;
+    height: 100vh;
+    color: #fffefeaa;
 }
 
-.search-bar form {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 700px;
-}
-
-.search-bar input {
-    flex: 1;
-    padding: 15px 25px 15px 45px; /* Increased left padding for icon */
-    border: 2px solid #FF5C8D; /* Matching border color */
-    border-radius: 50px 0 0 50px; /* Smoothly rounded on the left */
-    outline: none;
-    font-size: 16px;
-    font-weight: normal;
-    background: url('search-icon.png') no-repeat 15px center; /* Background icon */
-    background-size: 20px; /* Size of the icon */
-}
-
-.search-bar input:focus {
-    border-color: #FF8D5C; /* Soft focus color */
-    box-shadow: 0 0 10px rgba(255, 142, 120, 0.5); /* Glowing effect */
-}
-
-.search-bar button {
-    padding: 15px 25px;
-    border: none;
-    background-color: #FF5C8D; /* Vibrant button color */
-    color: #fff;
-    border-radius: 0 50px 50px 0; /* Smoothly rounded on the right */
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
-}
-
-.search-bar button:hover {
-    background: linear-gradient(135deg, #FF5C8D, #FF8D5C); /* Hover gradient */
-    transform: translateY(-2px); /* Slight lifting effect */
-}
-
-
-
-/* Main Section */
-main {
-    padding: 30px 20px;
-    text-align: center;
-}
-
-/* Image Banner */
-.image-banner {
-    background: linear-gradient(120deg, #FFB4A2, #E5989B); /* Soft pastel gradient */
-    height: 220px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    font-weight: bold;
-    color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Options Section */
-.options {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-}
-
-.option {
-    background-color: #fff;
-    padding: 25px;
-    border-radius: 15px;
-    width: 220px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.option:hover {
-    transform: translateY(-10px); /* Slight lift on hover */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.option .icon {
-    background-color: #FF5C8D; /* Bold, vibrant icon background */
-    color: #fff;
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 15px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-}
-
-.option p {
-    font-size: 18px;
-    font-weight: 600;
-    color: #555;
-}
-
-/* Footer */
-footer {
-    background: linear-gradient(135deg, #FF5C8D, #FF8D5C); /* Matching footer gradient */
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-    border-top: 2px solid #FFB4A2;
-    font-size: 14px;
-}
-
-/* Form Buttons */
-button {
-    transition: all 0.3s ease;
-}
-
-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Link to Home Page */
-.link-to-home p {
-    font-size: 16px;
-}
-
-.link-to-home a {
-    color: #FF5C8D;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.link-to-home a:hover {
-    text-decoration: underline;
-    color: #FF8D5C;
-    transform: scale(1.05);
-}
-
-/* General Signup Container */
+/* Glassmorphism Container */
 .signup-container {
-    background-color: #fff;
+    background: rgba(88, 84, 84, 0.93); /* Transparent background */
+    backdrop-filter: blur(15px); /* Frosted glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border for depth */
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Soft shadow */
     padding: 30px;
     max-width: 500px;
-    margin: 50px auto;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin: 20px auto;
+    color: white; /* White text for contrast */
+    text-align: center;
 }
-
 /* Header Section for Signup */
 .signup-header {
-    text-align: center;
     margin-bottom: 25px;
 }
 
 .signup-header h2 {
-    font-family: 'Montserrat', sans-serif; /* Montserrat for heading */
+    font-family: 'Montserrat', sans-serif;
     font-size: 32px;
     font-weight: bold;
-    color: #FF5C8D; /* Accent color */
+    color: #ed57ac; /* White for title */
 }
 
 .signup-header span {
-    color: #FF8D5C; /* Lighter accent color */
+    color: #FFCDB2; /* Light peach accent */
 }
 
 .signup-header p {
-    font-family: 'Roboto', sans-serif; /* Roboto for body */
     font-size: 18px;
-    color: #555;
+    color: #E8E8E8; /* Softer white for subtext */
 }
+
+   /* General Reset */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.8;
+    background: url('images/home.jpg') no-repeat center center fixed; /* Add background image */
+    background-size: cover; /* Ensure the image covers the entire screen */
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #444;
+}
+
+/* Glassmorphism Container */
+.signup-container {
+    background: rgba(75, 72, 72, 0.271); /* Transparent background */
+    backdrop-filter: blur(15px); /* Frosted glass effect */
+    border: 1px solid rgba(91, 86, 86, 0.3); /* Subtle border for depth */
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    padding: 20px; /* Reduced padding */
+    max-width: 400px; /* Slightly narrower form */
+    width: 100%;
+    margin: 10px auto;
+    color: white; /* White text for contrast */
+    text-align: left;
+}
+
+.signup-header {
+    margin-bottom: 15px; /* Reduced spacing */
+}
+
+.signup-header p {
+     font-size: 18px;
+     color: #E8E8E8; /* Softer white for subtext */
+ }
+
+ .signup-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px; /* Smaller header font size */
+    font-weight: bold;
+    color: #FF758C;
+    margin-bottom: 10px;
+}
+
+/* Label Styling */
+form label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF; /* Set the label headings to white */
+}
+
+.link-to-home p{color: #FFFFFF;}
 
 /* Form Styling */
 form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 8px;
 }
 
+
 form label {
-    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 600;
-    color: #555;
+    color: #E8E8E8; /* Softer white for labels */
 }
 
 form input {
     padding: 15px;
     font-size: 16px;
-    border: 2px solid #FF5C8D; /* Matching border with theme */
+    border: none;
     border-radius: 50px;
     outline: none;
-    background-color: #f5f5f5;
-    color: #444;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent input fields */
+    color: #fff; /* White text for inputs */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for inputs */
 }
 
 form input:focus {
-    border-color: #FF8D5C; /* Focus color */
-    box-shadow: 0 0 10px rgba(255, 142, 120, 0.5);
+    outline: 2px solid #FFCDB2; /* Highlight on focus */
+    background: rgba(255, 255, 255, 0.3); /* Slightly brighter on focus */
 }
 
-/* Form Button Styles */
+/* Form Buttons */
 .form-buttons {
     display: flex;
     justify-content: space-between;
@@ -283,100 +160,219 @@ button {
     font-size: 16px;
     font-weight: bold;
     border-radius: 50px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .btn-submit {
-    background-color: #5EB934; /* Success color */
-    color: white;
-    border: none;
-    cursor: pointer;
+    background: linear-gradient(135deg, #5EB934, #50E400); /* Green gradient */
+    color: #fff; /* White text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Button shadow */
 }
 
 .btn-clear {
-    background-color: #FFCDB2; /* Soft peach color for the clear button */
-    color: #555; /* Darker text for contrast */
-    border: none;
-    cursor: pointer;
+    background: linear-gradient(135deg, #FFCDB2, #FF8D5C); /* Peach gradient */
+    color: #fff; /* White text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Button shadow */
 }
 
-.btn-submit:hover {
-    background: linear-gradient(135deg, #5EB934, #50E400); /* Hover gradient with success colors */
-    transform: translateY(-2px);
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
 }
-
-.btn-clear:hover {
-    background-color: #FFB09A; /* Slightly darker peach shade on hover */
-    color: #444; /* Slightly darker text on hover */
-    transform: translateY(-2px);
-}
-
-
 
 /* Link Back to Home */
 .link-to-home {
-    text-align: center;
     margin-top: 20px;
 }
 
 .link-to-home p {
-    font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    color: #555;
+    color: #E8E8E8; /* Softer white */
 }
 
 .link-to-home a {
-    color: #FF5C8D;
+    color: #FFCDB2; /* Peach accent */
     text-decoration: none;
     font-weight: bold;
 }
 
 .link-to-home a:hover {
     text-decoration: underline;
-    color: #FF8D5C;
-    transform: scale(1.05);
+    color: #FF8D5C; /* Slightly darker peach on hover */
 }
 
 
 
-/* Sign In Container */
+
+/* Sign In Container with Glassmorphism */
 .signin-container {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Border for glass effect */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
     width: 350px;
     padding: 20px;
     text-align: center;
     margin: 50px auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Header */
+.signin-container:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Sign In Form Header Styling */
 .signin-container h1 {
-    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    color: #FF5C8D;
+    text-align: center;
     margin-bottom: 10px;
 }
 
-.signin-container .logo {
+.signin-container h1 .logo {
+    color: #FF8D5C;
     font-weight: bold;
-    color: #FF5C8D;
 }
 
-/* Input Fields */
+.signin-container h2{
+     color:white;
+}
+
+
+.forgot-password p{
+    color:white;
+}
+
+/* Style for white placeholder text */
+input::placeholder {
+    color: rgba(224, 215, 215, 0.699);
+    opacity: 1; /* Ensure full opacity for the placeholder */
+}
+
+/* Optional: Adjust placeholder styling on focus */
+input:focus::placeholder {
+    color: #ddd; /* Slightly dimmer color on focus for visual feedback */
+}
+
+
+/* Sign Up Header */
+.signin-container .signup-header span {
+    color: #FF8D5C;
+}
+
+/* Input Fields with Glassmorphism Touch */
 .signin-container input {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 25px;
     font-size: 14px;
     outline: none;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent input background */
+    backdrop-filter: blur(5px); /* Subtle blur for input fields */
+    color: #444;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .signin-container input:focus {
     border-color: #FF5C8D;
-    box-shadow: 0 0 5px rgba(255, 92, 141, 0.5);
+    box-shadow: 0 0 10px rgba(255, 92, 141, 0.5);
 }
+
+/* Submit Button Styling */
+.signin-container .signin-btn {
+    background: rgba(94, 185, 52, 0.7); /* Semi-transparent green */
+    color: white;
+    border: 2px solid rgba(80, 228, 0, 0.6);
+    border-radius: 50px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.signin-container .signin-btn:hover {
+    background: rgba(80, 228, 0, 0.9); /* Slightly brighter green on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.signin-container .signin-btn:active {
+    background: rgba(119, 226, 155, 0.8);
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Forgot Password Section Styling */
+.signin-container .forgot-password {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.signin-container .forgot-password a {
+    text-decoration: none;
+    color: #FF5C8D; /* Matching theme color */
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.signin-container .forgot-password a:hover {
+    color: #FF8D5C; /* Slightly brighter color on hover */
+    text-decoration: underline;
+}
+
+/* Social Button Styling */
+.signin-container .social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    color: #555;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 10px;
+}
+
+.signin-container .social-btn img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.signin-container .social-btn:hover {
+    background-color: #f1f1f1;
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Separator Line Styling */
+.signin-container hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}
+
+/* "Or connect with" Text */
+.signin-container p {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    margin: 10px 0;
+}
+
 
 /* Buttons */
 .signin-container button {
@@ -565,3 +561,83 @@ button {
     border: none;
     border-top: 1px solid #ddd;
 }
+
+
+
+  /* Global Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('images/home.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* Glassmorphism Container */
+.success-container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 40px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.success-container h1 {
+    font-size: 2.5em;
+    color: #4caf50;
+    margin-bottom: 20px;
+}
+
+.success-container p {
+    font-size: 1.2em;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.success-container .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.success-container .btn:hover {
+    background-color: #45a049;
+}
+
+.success-container .btn-secondary {
+    background-color: #FF758C;
+    margin-left: 10px;
+}
+
+.success-container .btn-secondary:hover {
+    background-color: #FF9B5F;
+}
+
+/* Success Icon */
+.success-icon {
+    font-size: 4em;
+    color: #4caf50;
+    margin-bottom: 20px;
+}
+
