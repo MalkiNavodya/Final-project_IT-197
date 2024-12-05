@@ -25,10 +25,10 @@ body {
 /* Glassmorphism Container */
 .signup-container {
     background: rgba(88, 84, 84, 0.93); /* Transparent background */
-    backdrop-filter: blur(15px); /* Frosted glass effect */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border for depth */
+    backdrop-filter: blur(2px); /* Frosted glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for depth */
     border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Soft shadow */
     padding: 30px;
     max-width: 500px;
     width: 100%;
@@ -81,7 +81,7 @@ body {
 /* Glassmorphism Container */
 .signup-container {
     background: rgba(75, 72, 72, 0.271); /* Transparent background */
-    backdrop-filter: blur(15px); /* Frosted glass effect */
+    backdrop-filter: blur(5px); /* Frosted glass effect */
     border: 1px solid rgba(91, 86, 86, 0.3); /* Subtle border for depth */
     border-radius: 15px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Soft shadow */
@@ -641,3 +641,4 @@ body {
     margin-bottom: 20px;
 }
 
+/*admin dashboard*/

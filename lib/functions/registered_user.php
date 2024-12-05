@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registered Users</title>
     <style>
+        /* Existing styles */
         * {
             margin: 0;
             padding: 0;
@@ -73,6 +74,31 @@
             background-color: #ddd;
         }
 
+        .btn {
+            padding: 8px 12px;
+            margin: 0 5px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-edit {
+            background-color: #3498db;
+        }
+
+        .btn-edit:hover {
+            background-color: #2a7cb7;
+        }
+
+        .btn-delete {
+            background-color: #e74c3c;
+        }
+
+        .btn-delete:hover {
+            background-color: #c0392b;
+        }
+
         .btn-back {
             display: inline-block;
             margin: 20px 0;
@@ -87,6 +113,21 @@
         .btn-back:hover {
             background-color: #e07e2f;
         }
+
+        .btn-add {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #2ecc71;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-add:hover {
+            background-color: #27ae60;
+        }
     </style>
 </head>
 <body>
@@ -95,6 +136,7 @@
     </header>
     <div class="container">
         <h2>List of Registered Users</h2>
+        <a href="add_user.php" class="btn-add">Add New User</a>
         <table>
             <thead>
                 <tr>
@@ -102,42 +144,45 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Registration Date</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Data will be dynamically inserted here -->
                 <?php
-                // Backend logic to fetch and display registered users (PHP example)
-                include('../../lib/functions/db_connection.php'); // Database connection file
+                include('db_connection.php'); // Database connection file
 
                 $query = "SELECT user_id, username, email, created_at FROM users";
                 $result = mysqli_query($conn, $query);
-// Check if the query executed successfully
-if (!$result) {
-    echo "<tr><td colspan='4'>Error: " . mysqli_error($conn) . "</td></tr>";
-} else {
-    if (mysqli_num_rows($result) > 0) {
-        // Fetch and display each user
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "
-            <tr>
-                <td>{$row['user_id']}</td>
-                <td>{$row['username']}</td>
-                <td>{$row['email']}</td>
-                <td>{$row['created_at']}</td>
-            </tr>";
-        }
-    } else {
-        echo "
-        <tr>
-            <td colspan='4'>No users registered yet.</td>
-        </tr>";
-    }
-}
-?>
+
+                if (!$result) {
+                    echo "<tr><td colspan='5'>Error: " . mysqli_error($conn) . "</td></tr>";
+                } else {
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "
+                            <tr>
+                                <td>{$row['user_id']}</td>
+                                <td>{$row['username']}</td>
+                                <td>{$row['email']}</td>
+                                <td>{$row['created_at']}</td>
+                                <td>
+                                    <a href='edit_user.php?id={$row['user_id']}' class='btn btn-edit'>Edit</a>
+                                    <a href='delete_user.php?id={$row['user_id']}' class='btn btn-delete' onclick='return confirm(\"Are you sure you want to delete this user?\")'>Delete</a>
+                                </td>
+                            </tr>";
+                        }
+                    } else {
+                        echo "
+                        <tr>
+                            <td colspan='5'>No users registered yet.</td>
+                        </tr>";
+                    }
+                }
+                ?>
+                
             </tbody>
         </table>
-        <a href="../../home.php" class="btn-back">Back to Home</a>
+        <a href="../views/dashboard/admin.php" class="btn-back">Back to Home</a>
     </div>
 </body>
 </html>

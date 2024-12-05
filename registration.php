@@ -11,14 +11,44 @@
             background-size: cover; /* Ensure the image covers the entire screen */
         }
 
+        /* Glassmorphism Container */
+        .signup-container {
+            backdrop-filter: blur(90px); /* Frosted glass effect */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
         .error-message {
-            color: red;
+            color: #E72D30;
             font-size: 14px;
             margin-top: 10px;
         }
 
-        
+        /* Hidden role selection elements */
+        .role-container {
+            display: none;
+            margin-top: 10px;
+        }
 
+        .form-buttons {
+            margin-top: 20px;
+        }
+
+        .btn-select-role {
+            background-color: #5EB934;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-select-role:hover {
+            background-color: #50E400;
+        }
     </style>
 </head>
 <body>
@@ -44,13 +74,18 @@
                 <label for="confirm_password">Confirm Password</label>
                 <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
 
-                <!-- Role selection (Admin, Agent, User) -->
-                <label for="role">Select Role</label>
-                <select name="role" required>
-                    <option value="user">User</option>
-                    <option value="agent">Agent</option>
-                    <option value="admin">Admin</option>
-                </select>
+                <!-- Hidden Role Selection -->
+                <div>
+                    <button type="button" id="select-role-button" class="btn-select-role">Select Role</button>
+                </div>
+                <div class="role-container" id="role-container">
+                    <label for="role">Choose Role</label>
+                    <select name="role" id="role" required>
+                        <option value="user">User</option>
+                        <option value="agent">Agent</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
 
                 <!-- Form Buttons -->
                 <div class="form-buttons">
@@ -71,8 +106,19 @@
             <!-- Link Back to Home -->
             <div class="link-to-home">
                 <p>Already have an account? <a href="login.php">Go to Login</a></p>
+                <p> <a href="login.php">Back to home</a></p>
             </div>
         </div>
     </div>
+
+    <!-- JavaScript for Role Selection -->
+    <script>
+        const selectRoleButton = document.getElementById('select-role-button');
+        const roleContainer = document.getElementById('role-container');
+
+        selectRoleButton.addEventListener('click', () => {
+            roleContainer.style.display = 'block'; // Show the role selection dropdown
+        });
+    </script>
 </body>
 </html>

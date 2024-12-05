@@ -107,20 +107,23 @@
 <body>
     <nav class="navbar">
         <div class="logo-container">
-            <img src="images/logo.png" alt="Website Logo">
+            <img src="../../../images/logo.png" alt="Website Logo">
             <a href="#" class="logo-text">Nestly</a>
         </div>
         <ul class="nav-links">
-            <li><a href="home.php">Home</a></li>
+            <li><a href="../../../home.php">Home</a></li>
             <li><a href="#">About Us</a></li>
-            <li><a href="property.php">Property</a></li>
+            <li><a href="../../../property.php">Property</a></li>
             <li><a href="#">Agent</a></li>
             <li><a href="#">Map</a></li>
         </ul>
         <div class="right-section">
-            <a href="registration.php">Register</a>
-            <a href="login.php">Login</a>
-           <img src="" alt="Profile Icon">
+            <a href="../../../registration.php">Register</a>
+            <a href="../../../login.php">Login</a>
+            <img src="https://via.placeholder.com/150" alt="Profile Icon">
+
+
+
 
         </div>
     </nav>

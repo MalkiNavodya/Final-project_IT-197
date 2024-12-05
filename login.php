@@ -16,6 +16,12 @@
         font-size: 14px;
         margin-top: 10px;
      }
+
+     .signin-container {
+             backdrop-filter: blur(100px); /* Frosted glass effect */
+   
+     }
+
     </style>
 </head>
 <body>

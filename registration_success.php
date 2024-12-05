@@ -97,7 +97,8 @@
         <!-- Buttons -->
         <a href="login.php" class="btn">Log In</a>
         <a href="index.php" class="btn btn-secondary">Back to Home</a>
-        <a href="lib/functions/registered_user.php" class="btn-back">View Registered Users</a>
+        <a href="transaction.php" class="btn btn-secondary">transer</a>
+        
 
     </div>
 </body>
