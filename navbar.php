@@ -1,3 +1,30 @@
+<?php
+// Include database connection
+require 'lib/functions/db_connection.php';
+
+session_start();
+
+// Assuming the user is logged in and their ID is stored in the session
+$user_id = $_SESSION['user_id'] ?? null;
+
+if (!$user_id) {
+    die("You need to log in to view this page.");
+}
+
+// Fetch user details from the database
+$query = "SELECT * FROM users WHERE user_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$user = $result->fetch_assoc();
+
+if (!$user) {
+    die("User not found.");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +32,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glassmorphism Nav Bar</title>
     <style>
-        body {
+         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
             background: url('images/home.jpg') no-repeat center center fixed;
@@ -117,21 +144,19 @@
             <li><a href="../../../contact_agent.php">Agent</a></li>
             <li><a href="../../../map.php">Map</a></li>
             <li><a href="../../../transaction.php">Transaction</a></li>
-            <li><a href="../../../search_form.php">search</a></li>
+            <li><a href="../../../search_form.php">Search</a></li>
         </ul>
         <div class="right-section">
             <a href="../../../registration.php">Register</a>
             <a href="../../../login.php">Login</a>
-            <img src="../../../images/profile.jpg" alt="Profile Icon">
-
-
-
-
+            <a href="../../../profile.php">
+                <img src="<?php echo htmlspecialchars($user['profile_picture'] ?: '../../../images/default_profile.jpg') . '?' . time(); ?>" alt="Profile Icon">
+            </a>
         </div>
     </nav>
+
+    <?php if (isset($_SESSION['admin_logged_in'])): ?>
+        <li><a href="lib/views/dashboard/admin.php">Admin Dashboard</a></li>
+    <?php endif; ?>
 </body>
 </html>
-
-<?php if (isset($_SESSION['admin_logged_in'])): ?>
-    <li><a href="lib/views/dashboard/admin.php">Admin Dashboard</a></li>
-<?php endif; ?>

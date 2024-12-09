@@ -237,6 +237,23 @@ body {
                 flex-direction: column;
             }
         }
+
+        .save-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #4CAF50, #81C784);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background 0.3s ease-in-out;
+}
+
+.save-button:hover {
+    background: linear-gradient(135deg, #81C784, #4CAF50);
+}
+
         
     </style>
 </head>
@@ -275,6 +292,8 @@ body {
             <p><strong>Size:</strong> <?php echo $property['size']; ?> sq ft</p>
             <p><strong>Amenities:</strong> <?php echo htmlspecialchars($property['amenities']); ?></p>
             <a href="property.php" class="back-button">Back to Listings</a>
+            <a href="lib/functions/save_property.php?property_id=<?php echo $property['id']; ?>" class="save-button">Save Property</a>
+
         </div>
 
         <!-- Contact Form -->
