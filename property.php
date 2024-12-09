@@ -1,296 +1,179 @@
+<?php
+// Include database connection
+include('lib/functions/db_connection.php');
+
+// Fetch properties from the database
+$query = "SELECT * FROM properties";
+$result = mysqli_query($conn, $query);
+
+$properties = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $properties[] = $row;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Royal Blue Resident</title>
-    <link rel="stylesheet" href="styles.css">
-    <?php include 'navbar.php'; ?>
+    <title>Property Listings</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Arial', sans-serif;
-            background-image: url('images/home.jpg'); /* Set background image */
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #FF758C, #FF7B76, #FF9B5F, #FF9473, #FCE3DB);
+            background-image: url('images/home.jpg'); /* Set the background image */
             background-size: cover;
-            color: #333;
-            line-height: 1.6;
-            height: 100vh;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-blend-mode: overlay; /* Blend gradient and image */
+            min-height: 100vh;
         }
+        .back-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-weight: bold;
+    }
 
-        /* Header */
-        header {
-            background-color: rgba(52, 58, 64, 0.8);
-            color: white;
-            padding: 20px 0;
+    .back-button:hover {
+        background-color: #218838;
+    }
+
+
+        .hero {
             text-align: center;
+            color: #FCE3DB;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.5); /* Transparent dark background */
             backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
         }
 
-        header h1 {
-            font-size: 2.5em;
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
         }
 
-        /* Property Section */
-        .property-header {
-            display: flex;
-            justify-content: space-between;
-            padding: 40px 5%;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 60px;
+        .hero p {
+            font-size: 1.2rem;
+            margin: 10px 0 0;
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        .property-header .left {
-            width: 50%;
-        }
-
-        .property-header .right {
-            width: 45%;
-            color: white;
-        }
-
-        .property-header .right p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        .property-header .right h2 {
-            font-size: 2.5em;
-            color: #FF758C;
-        }
-
-        .property-header .right .price {
-            color: #FF758C;
-            font-size: 1.5em;
-            margin: 10px 0;
-        }
-
-        .property-header img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Specifications Section */
-        .specifications, .facilities, .gallery, .browse-more {
-            background: rgba(255, 255, 255, 0.3);
-            padding: 40px 5%;
-            border-radius: 15px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            color: white;
-        }
-
-        h3 {
-            color: #FF758C;
-            margin-bottom: 20px;
-        }
-
-        .specifications p, .facilities p {
-            font-size: 1.1em;
-        }
-
-        .gallery img {
-            width: 32%;
-            margin-right: 2%;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .gallery img:last-child {
-            margin-right: 0;
-        }
-
-        /* Contact Form */
-        .contact-form {
-            display: flex;
-            background-color: rgba(255, 255, 255, 0.3);
-            padding: 40px 5%;
-            border-radius: 15px;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            color: white;
-        }
-
-        .contact-form .form-group {
-            margin-right: 20px;
-        }
-
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.7);
-        }
-
-        .contact-form .form-button {
-            background-color: #FF758C;
-            color: white;
-            border: none;
-            padding: 15px 20px;
-            font-size: 1.2em;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .contact-form .form-button:hover {
-            background-color: #FF9B5F;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
             padding: 20px;
-            background-color: rgba(52, 58, 64, 0.8);
+            display: grid; /* Use grid layout */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid columns */
+            gap: 20px; /* Space between grid items */
+            background: rgba(255, 255, 255, 0.6); /* Transparent white background */
+            backdrop-filter: blur(10px); /* Blur effect for the content behind */
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Slightly darker shadow for depth */
+        }
+
+        .property-card {
+            background: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Slightly darker shadow for depth */
+            backdrop-filter: blur(20px); /* Frosted glass effect with increased blur */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .property-card:hover {
+            transform: scale(1.02); /* Slight zoom on hover */
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+        }
+
+        .property-image {
+            width: 100%; /* Full width for grid layout */
+            height: 200px;
+            background: #ccc;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .property-content {
+            padding: 20px;
+            flex-grow: 1;
+            color: rgba(255, 255, 255, 0.9); /* Slightly less intense white text */
+        }
+
+        .property-content h2 {
+            font-size: 1.5rem;
+            margin: 0 0 10px;
+        }
+
+        .property-content p {
+            margin: 5px 0;
+            color: rgba(255, 255, 255, 0.8); /* Softer white for text */
+        }
+
+        .view-button {
+            background: linear-gradient(135deg, #FF9473, #FF758C); /* Gradient button */
             color: white;
-            backdrop-filter: blur(10px);
-        }
-
-        footer p {
-            font-size: 1.1em;
-        }
-
-        .property-item {
-            width: 30%;
-            margin: 1%;
-            display: inline-block;
-        }
-
-        .property-item img {
-            width: 100%;
+            padding: 10px 15px;
+            border: none;
             border-radius: 8px;
-        }
-
-        .property-item h4 {
-            font-size: 1.5em;
-            color: #FF758C;
-            margin-top: 10px;
-        }
-
-        .property-item p {
-            font-size: 1.1em;
-            color: #555;
-        }
-
-        .property-item .btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #FF758C;
-            color: white;
             text-decoration: none;
-            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease-in-out;
         }
 
-        .property-item .btn:hover {
-            background-color: #FF9B5F;
+        .view-button:hover {
+            background: linear-gradient(135deg, #FF7B76, #FF9473);
         }
 
+        @media screen and (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
-
-<br><br><br>
-
-<!-- Property Header Section -->
-<div class="property-header">
-    <div class="left">
-        <img src="images/home5.jpg" alt="Property Image">
+    <div class="hero">
+        <h1>Available Properties</h1>
+        <p>Find your dream home from our exclusive listings.</p>
     </div>
-    <div class="right">
-        <h2>Royal Blue Resident</h2>
-        <p>Explore our comprehensive listings of residential properties, from cozy starter homes to luxurious estates.</p>
-        <div class="price">$250,000</div>
-        <p>Property Agent: Mike Lewis</p>
-        <p>Email: mike@realtyco.com</p>
-        <p>Phone: (123) 456 789</p>
+<br>
+    <div class="container">
+        <?php foreach ($properties as $property): ?>
+            <div class="property-card">
+                <div class="property-image" style="background-image: url('images/property_<?php echo $property['id']; ?>.jpg');"></div>
+                <div class="property-content">
+                    <h2><?php echo htmlspecialchars($property['title']); ?></h2>
+                    <p><?php echo htmlspecialchars($property['description']); ?></p><br>
+                    <a href="property_details.php?id=<?php echo $property['id']; ?>" class="view-button">View Details</a>
+                </div>
+            </div>
+        <?php endforeach; ?>
     </div>
-</div>
-
-<!-- Property Specification Section -->
-<div class="specifications">
-    <h3>Specifications</h3>
-    <p><strong>Bedrooms:</strong> 3</p>
-    <p><strong>Bathrooms:</strong> 2</p>
-    <p><strong>Dimensions:</strong> 250m²</p>
-    <p><strong>Garage:</strong> 3</p>
-    <p><strong>Floor:</strong> 3</p>
-    <p><strong>Ceiling:</strong> 4m</p>
-</div>
-
-<!-- Facilities Section -->
-<div class="facilities">
-    <h3>Facilities</h3>
-    <p>Air Conditioning, Swimming Pool, Sauna, Gym, Local Park, Apple TV, Wireless, Garden, Mosque</p>
-</div>
-
-<!-- Photo Gallery Section -->
-<div class="gallery">
-    <h3>Photo Gallery</h3>
-    <img src="images/home7.jpg" alt="Living Room">
-    <img src="images/home8.jpg" alt="Kitchen">
-    <img src="images/home5.jpg" alt="Bedroom">
-</div>
-
-<!-- Browse More Properties -->
-<div class="browse-more">
-    <h3>Browse More</h3>
-    <div class="property-item">
-        <img src="images/home2.jpg" alt="Metro House">
-        <h4>Metro House</h4>
-        <p>$250,000 | 4 Bedrooms | 2 Bathrooms</p>
-        <a href="#" class="btn">Read More</a>
-    </div>
-    <div class="property-item">
-        <img src="images/home2.jpg" alt="Avenue Regency">
-        <h4>Avenue Regency</h4>
-        <p>$450,000 | 4 Bedrooms | 2 Bathrooms</p>
-        <a href="#" class="btn">Read More</a>
-    </div>
-    <div class="property-item">
-        <img src="images/home2.jpg" alt="New Central Park">
-        <h4>New Central Park</h4>
-        <p>$700,000 | 4 Bedrooms | 2 Bathrooms</p>
-        <a href="#" class="btn">Read More</a>
-    </div>
-</div>
-
-<!-- Contact Form -->
-<div class="contact-form">
-    <div class="form-group">
-        <input type="text" placeholder="Your Name">
-    </div>
-    <div class="form-group">
-        <input type="email" placeholder="Your Email">
-    </div>
-    <div class="form-group">
-        <input type="text" placeholder="Your Phone Number">
-    </div>
-    <div class="form-group">
-        <textarea placeholder="Your Message"></textarea>
-    </div>
-    <button class="form-button">Send Message</button>
-</div>
-
-<!-- Footer -->
-<footer>
-    <p>&copy; 2024 Realty. All Rights Reserved.</p>
-</footer>
+    <!-- Back to Home Button -->
+<a href="home.php" class="back-button">Back to Home</a>
 
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 // Include the database connection file
-include('db_connection.php');
+include('../../functions/db_connection.php');
 
 // Initialize variables
 $message = '';
@@ -164,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_user'])) {
 
             <button type="submit" name="update_user" class="btn">Update User</button>
         </form>
-        <a href="../views/dashboard/admin.php" class="btn-back">Back to Users List</a>
+        <a href="../../views/dashboard/admin.php" class="btn-back">Back to Users List</a>
     </div>
 </body>
 </html>

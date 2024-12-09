@@ -1,6 +1,6 @@
 <?php
 // Include the database connection file
-include('db_connection.php');
+include('../../functions/db_connection.php');
 
 // Initialize an error or success message
 $message = '';
@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <button type="submit" class="btn">Add User</button>
         </form>
-        <a href="../views/dashboard/admin.php" class="btn-back">Back to Users List</a>
+        <a href="../../views/dashboard/admin.php" class="btn-back">Back to Users List</a>
     </div>
 </body>
 </html>

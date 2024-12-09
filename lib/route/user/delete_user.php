@@ -1,6 +1,6 @@
 <?php
 // Include the database connection file
-include('db_connection.php');
+include('../../functions/db_connection.php');
 
 // Initialize a response message
 $message = '';
@@ -84,6 +84,6 @@ mysqli_close($conn);
     <div class="message <?php echo strpos($message, 'successfully') !== false ? 'success' : 'error'; ?>">
         <?php echo htmlspecialchars($message); ?>
     </div>
-    <a href="../views/dashboard/admin.php" class="btn-back">Back to Users List</a>
+    <a href="../../views/dashboard/admin.php" class="btn-back">Back to Users List</a>
 </body>
 </html>

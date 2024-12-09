@@ -111,16 +111,17 @@
             <a href="#" class="logo-text">Nestly</a>
         </div>
         <ul class="nav-links">
-            <li><a href="../../../home.php">Home</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="../../../about.php">About Us</a></li>
             <li><a href="../../../property.php">Property</a></li>
-            <li><a href="#">Agent</a></li>
-            <li><a href="#">Map</a></li>
+            <li><a href="../../../contact_agent.php">Agent</a></li>
+            <li><a href="../../../map.php">Map</a></li>
+            <li><a href="../../../transaction.php">Transaction</a></li>
         </ul>
         <div class="right-section">
             <a href="../../../registration.php">Register</a>
             <a href="../../../login.php">Login</a>
-            <img src="https://via.placeholder.com/150" alt="Profile Icon">
+            <img src="../../../images/profile.jpg" alt="Profile Icon">
 
 
 

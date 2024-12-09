@@ -5,6 +5,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
     header("Location: ../../login.php");
     exit();
 }
+// Simulate fetching user details (replace with actual database queries if needed)
+$name = $_SESSION['name'] ?? 'Guest'; // Assuming 'name' is stored in the session
+$role = ucfirst($_SESSION['role']);  // Capitalize the first letter of the role (e.g., "User")
 ?>
 
 <!-- User Dashboard HTML -->

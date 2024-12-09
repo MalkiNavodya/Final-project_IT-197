@@ -5,23 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <style>
-        /* General Reset */
-        * {
+          /* General Reset */
+          * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Body Styling */
         body {
             display: flex;
+            flex-direction: column;
             min-height: 100vh;
-            background-image: url('../../../images/home.jpg'); /* Set image as background */
-            background-size: cover; /* Make the image cover the whole body */
-            background-position: center; /* Center the image */
+            background-color: #f7f7f7;
             color: #333;
-            overflow: hidden;
         }
 
         /* Sidebar */
@@ -31,12 +28,12 @@
             top: 0;
             height: 100%;
             width: 250px;
-            background: #2c3e50;
+            background: var(--sidebar-bg-color, #2c3e50);
             color: #fff;
             padding: 20px;
-            transform: translateX(-250px);
-            transition: all 0.3s ease;
-            z-index: 10;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
         }
 
         .sidebar.active {
@@ -53,16 +50,6 @@
             border-radius: 50%;
             margin-bottom: 10px;
             border: 3px solid #FF9473;
-        }
-
-        .sidebar .admin-profile h3 {
-            margin-bottom: 5px;
-            font-size: 1.2rem;
-        }
-
-        .sidebar .admin-profile p {
-            font-size: 0.9rem;
-            color: #bdc3c7;
         }
 
         .sidebar nav ul {
@@ -89,21 +76,25 @@
         }
 
         .toggle-btn {
-            position: absolute;
+            position: fixed;
             top: 20px;
             left: 20px;
             font-size: 20px;
             cursor: pointer;
-            color: #fff;
-            z-index: 11;
+            color: #333;
+            z-index: 1100;
+            background: #FF9473;
+            padding: 10px;
+            border-radius: 50%;
         }
 
         /* Main Content */
         .content {
-            flex: 1;
+            margin-top: 60px;
             margin-left: 250px;
             padding: 20px;
-            transition: all 0.3s ease;
+            flex: 1;
+            transition: margin-left 0.3s ease;
         }
 
         .content.collapsed {
@@ -142,11 +133,10 @@
             background: #FD8A86;
         }
 
-        /* Stats Section */
         .stats {
             display: flex;
             gap: 20px;
-            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         .stat-card {
@@ -165,211 +155,200 @@
             color: #FF9B5F;
         }
 
-        .stat-card p {
-            font-size: 1rem;
-            color: #333;
+        .theme-switcher {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
         }
 
-        /* CRUD Table */
-        .crud-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(255, 255, 255, 0.3);
+        .theme-switcher button {
+            padding: 10px 15px;
+            border: none;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .crud-table th,
-        .crud-table td {
-            padding: 15px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            color: white;
             font-size: 1rem;
-            color: #333;
         }
 
-        .crud-table thead {
-            background: rgba(255, 123, 118, 0.4);
-            color: #fff;
+        .theme-default {
+            background: #2c3e50;
         }
 
-        /* Button Colors */
-        .btn-update {
-            padding: 8px 15px;
-            background-color: #5EB934; /* Success */
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        .theme-blue {
+            background: #3498db;
         }
 
-        .btn-update:hover {
-            background-color: #50E400;
+        .theme-green {
+            background: #27ae60;
         }
 
-        .btn-edit {
-            padding: 8px 15px;
-            background-color: #FF9F01; /* Edit (Orange) */
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        }
+/* Table Styles */
+table {
+    width: 90%; /* Adjust the width of the table */
+    max-width: 1200px; /* Ensure it doesn't get too wide on large screens */
+    margin: 20px auto; /* Center the table on the page */
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
 
-        .btn-edit:hover {
-            background-color: #FFB64E;
-        }
+th, td {
+    padding: 12px 20px; /* Increased padding for more spacious cells */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem; /* Adjust font size for better readability */
+}
 
-        .btn-delete {
-            padding: 8px 15px;
-            background-color: #E72D30; /* Error */
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        }
+th {
+    background: #FF9473;
+    color: #fff;
+    font-weight: bold;
+}
 
-        .btn-delete:hover {
-            background-color: #FD8A86;
-        }
+tr:hover {
+    background-color: #f1f1f1;
+}
 
-        /* Footer Section */
-        .footer {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #bdc3c7;
-            margin-top: 20px;
-        }
-         /* Existing styles */
-         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+td {
+    color: #333;
+}
 
-        body {
-            background-color: #f7f7f7;
-            color: #333;
-            padding: 20px;
-        }
+/* Adjust for mobile responsiveness */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        margin: 10px 0; /* Reduced margin for mobile view */
+    }
 
-        header {
-            background-color: #f68c36;
-            padding: 20px 0;
-            text-align: center;
-            color: white;
-        }
+    th, td {
+        padding: 10px; /* Reduced padding for smaller screens */
+        font-size: 0.9rem; /* Smaller text size for mobile */
+    }
 
-        header h1 {
-            font-size: 2.5em;
-        }
+    /* Add a scroll for tables that are too wide on small screens */
+    .container {
+        overflow-x: auto;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
+    table {
+        width: 100%;
+        table-layout: auto; /* Adjusts the table layout */
+    }
 
-        h2 {
-            text-align: center;
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #f68c36;
-        }
+    th, td {
+        white-space: nowrap; /* Ensures text doesn't wrap */
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
+    /* Stack the table headers and data vertically for very small screens */
+    th, td {
+        display: block;
+        width: 100%; /* Makes each cell full-width */
+        box-sizing: border-box; /* Ensures padding is included in the width */
+    }
 
-        table, th, td {
-            border: 1px solid #ddd;
-        }
+    th {
+        background: #FF9473;
+        text-align: left; /* Align headers left for better readability */
+    }
 
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
+    td {
+        background: #f9f9f9;
+    }
 
-        th {
-            background-color: #f68c36;
-            color: white;
-        }
+    /* Make the table headers sticky on top */
+    thead {
+        position: sticky;
+        top: 0;
+        background: #FF9473;
+        z-index: 1;
+    }
+}
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
 
-        tr:hover {
-            background-color: #ddd;
-        }
 
-        .btn {
-            padding: 8px 12px;
-            margin: 0 5px;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
+/* Adjust for mobile responsiveness */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        margin: 10px 0; /* Reduced margin for mobile view */
+    }
 
-        .btn-edit {
-            background-color: #3498db;
-        }
+    th, td {
+        padding: 10px; /* Reduced padding for smaller screens */
+        font-size: 0.9rem; /* Smaller text size for mobile */
+    }
+}
 
-        .btn-edit:hover {
-            background-color: #2a7cb7;
-        }
-
-        .btn-delete {
-            background-color: #e74c3c;
-        }
-
-        .btn-delete:hover {
-            background-color: #c0392b;
-        }
-
-        .btn-back {
-            display: inline-block;
-            margin: 20px 0;
-            padding: 10px 20px;
-            background-color: #f68c36;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .btn-back:hover {
-            background-color: #e07e2f;
-        }
 
         .btn-add {
             display: inline-block;
-            margin: 20px 0;
-            padding: 10px 20px;
-            background-color: #2ecc71;
+            padding: 10px 15px;
+            background: #27ae60;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-size: 1rem;
         }
 
         .btn-add:hover {
-            background-color: #27ae60;
+            background: #2ecc71;
+        }
+
+        .btn-edit {
+            background: #3498db;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn-edit:hover {
+            background: #2980b9;
+        }
+
+        .btn-delete:hover {
+            background: #c0392b;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .toggle-btn {
+                position: fixed;
+                top: 10px;
+                left: 10px;
+            }
+
+            .sidebar {
+                width: 200px;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+
+            .stat-card {
+                margin-bottom: 10px;
+            }
+
+            table, th, td {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -377,18 +356,17 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="admin-profile">
-            <img src="https://via.placeholder.com/80" alt="Admin Profile">
-            <h3>Admin Name</h3>
+            <img src="../../../images/profile.jpg" alt="Admin Profile">
+            <h3>Admin</h3>
             <p>Administrator</p>
         </div>
         <nav>
             <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Users</a></li>
+                <li><a href="admin.php">Dashboard</a></li>
+                <li><a href="">Users</a></li>
                 <li><a href="#">Reports</a></li>
                 <li><a href="#">Analytics</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Log Out</a></li>
+                <li><a href="../../../index.php">Log Out</a></li>
             </ul>
         </nav>
     </div>
@@ -398,10 +376,10 @@
         <span class="toggle-btn" id="toggle-btn">☰</span>
         <header class="header">
             <h1>Admin Dashboard</h1>
-            <button class="btn-logout">Log Out</button>
+            <a href="../../../index.php"><button class="btn-logout">Log Out</button></a>
         </header>
 
-<?php
+        <?php
 include('../../functions/db_connection.php'); // Database connection file
 
 // Fetch Total Users
@@ -442,16 +420,16 @@ $newSignups = mysqli_fetch_assoc($newSignupsResult)['new_signups'] ?? 0;
         <h2><?php echo $newSignups; ?></h2>
         <p>New Signups</p>
     </div>
-</section>
+</section><br><br>
 
 
-        <div class="container">
-            <h2>List of Registered Users</h2>
-            <a href="../../functions/add_user.php" class="btn-add">Add New User</a>
+        <div >
+            <h2>List of Registered Users</h2><br>
+            <a href="../../route/user/add_user.php" class="btn-add">Add New User</a>
             <table>
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Registration Date</th>
@@ -477,8 +455,8 @@ $newSignups = mysqli_fetch_assoc($newSignupsResult)['new_signups'] ?? 0;
                                     <td>{$row['email']}</td>
                                     <td>{$row['created_at']}</td>
                                     <td>
-                                        <a href='../../functions/edit_user.php?id={$row['user_id']}' class='btn btn-edit'>Edit</a>
-                                        <a href='../../functions/delete_user.php?id={$row['user_id']}' class='btn btn-delete' onclick='return confirm(\"Are you sure you want to delete this user?\")'>Delete</a>
+                                        <a href='../../route/user/edit_user.php?id={$row['user_id']}' class='btn btn-edit'>Edit</a>
+                                        <a href='../../route/user/delete_user.php?id={$row['user_id']}' class='btn btn-delete' onclick='return confirm(\"Are you sure you want to delete this user?\")'>Delete</a>
                                     </td>
                                 </tr>";
                             }
@@ -493,10 +471,10 @@ $newSignups = mysqli_fetch_assoc($newSignupsResult)['new_signups'] ?? 0;
                 </tbody>
             </table>
         </div>
-    </div>
+   
 
-    <!-- JavaScript for Toggle Button -->
-    <script>
+   <!-- JavaScript for Toggle Button -->
+   <script>
         const toggleBtn = document.getElementById('toggle-btn');
         const sidebar = document.getElementById('sidebar');
         const mainContent = document.getElementById('main-content');
@@ -506,5 +484,93 @@ $newSignups = mysqli_fetch_assoc($newSignupsResult)['new_signups'] ?? 0;
             mainContent.classList.toggle('collapsed');
         });
     </script>
+
+<?php
+include('../../functions/db_connection.php'); // Database connection file
+
+$query = "SELECT 
+            id, title, price, location, description, 
+            bedrooms, bathrooms, `size`, amenities, agent_id 
+          FROM properties";
+$result = mysqli_query($conn, $query);
+
+?>
+
+    <div class="container">
+
+       
+       
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                        <th>Bedrooms</th>
+                        <th>Bathrooms</th>
+                        <th>Size</th>
+                        <th>Amenities</th>
+                        <th>Agent ID</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if (!$result) {
+                        echo "<tr><td colspan='11'>Error: " . mysqli_error($conn) . "</td></tr>";
+                    } else {
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "
+                                <tr>
+                                    <td>{$row['id']}</td><br>
+                                    <td>{$row['title']}</td>
+                                    <td>{$row['price']}</td>
+                                    <td>{$row['location']}</td>
+                                    <td>{$row['description']}</td>
+                                    <td>{$row['bedrooms']}</td>
+                                    <td>{$row['bathrooms']}</td>
+                                    <td>{$row['size']}</td>
+                                    <td>{$row['amenities']}</td>
+                                    <td>{$row['agent_id']}</td>
+                                    <td>
+                                        <a href='../../route/property/edit_property.php?id={$row['id']}' class='btn btn-edit'>Edit</a><br><br><br>
+                                        <a href='../../route/property/delete_property.php?id={$row['id']}' class='btn btn-delete' onclick='return confirm(\"Are you sure you want to delete this property?\")'>Delete</a>
+                                    <br><br>
+                                        </td>
+                                </tr>";
+                            }
+                        } else {
+                            echo "
+                            <tr>
+                                <td colspan='11'>No properties listed yet.</td>
+                            </tr>";
+                        }
+                    }
+                    ?>
+                </tbody>
+                <h1>Manage Properties</h1>
+                <a href="../../route/property/add_property.php" class="btn-add">Add Property</a>
+            </table>
+        </div>
+        </div>
+     
+    <script>
+        const toggleBtn = document.getElementById('toggle-btn');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            mainContent.classList.toggle('collapsed');
+        });
+
+        function switchTheme(color) {
+            document.documentElement.style.setProperty('--sidebar-bg-color', color);
+        }
+    </script>
+    
 </body>
 </html>

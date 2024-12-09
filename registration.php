@@ -82,7 +82,6 @@
                     <label for="role">Choose Role</label>
                     <select name="role" id="role" required>
                         <option value="user">User</option>
-                        <option value="agent">Agent</option>
                         <option value="admin">Admin</option>
                     </select>
                 </div>
@@ -106,7 +105,7 @@
             <!-- Link Back to Home -->
             <div class="link-to-home">
                 <p>Already have an account? <a href="login.php">Go to Login</a></p>
-                <p> <a href="login.php">Back to home</a></p>
+                <p> <a href="index.php">Back to home</a></p>
             </div>
         </div>
     </div>

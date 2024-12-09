@@ -14,7 +14,7 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transactions and Payments</title>
     <link rel="stylesheet" href="../../css/style.css">
-    <style>/* General Styles */
+      <style>
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
@@ -110,9 +110,9 @@ button:hover {
 }
 
 /* Adjust the input fields for glassmorphism effect */
-input[type="text"],
-input[type="date"],
-input[type="number"],
+  input[type="text"],
+  input[type="date"],
+  input[type="number"],
 select {
     padding: 10px;
     border-radius: 8px;
@@ -123,9 +123,9 @@ select {
     margin: 5px 0;
 }
 
-input[type="text"]:focus,
-input[type="date"]:focus,
-input[type="number"]:focus,
+  input[type="text"]:focus,
+  input[type="date"]:focus,
+  input[type="number"]:focus,
 select:focus {
     outline: none;
     border-color: #4CAF50; /* Highlight border on focus */
