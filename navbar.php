@@ -117,6 +117,7 @@
             <li><a href="../../../contact_agent.php">Agent</a></li>
             <li><a href="../../../map.php">Map</a></li>
             <li><a href="../../../transaction.php">Transaction</a></li>
+            <li><a href="../../../search_form.php">search</a></li>
         </ul>
         <div class="right-section">
             <a href="../../../registration.php">Register</a>

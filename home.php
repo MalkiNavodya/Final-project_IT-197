@@ -151,7 +151,7 @@
     height: 200px;
     object-fit: cover;
     border-radius: 15px 15px 0 0; /* Rounds the top corners of the image */
-}
+ }
 
 .property-card h3 {
     font-size: 20px;

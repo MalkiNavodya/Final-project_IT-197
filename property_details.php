@@ -45,6 +45,7 @@ $image_list = $image_paths[$property['id']] ?? ['images/placeholder.jpg'];
     <title><?php echo htmlspecialchars($property['title']); ?> - Property Details</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        
         /* General reset for body */
 body {
     font-family: 'Arial', sans-serif;

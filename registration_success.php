@@ -97,7 +97,7 @@
         <!-- Buttons -->
         <a href="login.php" class="btn">Log In</a>
         <a href="index.php" class="btn btn-secondary">Back to Home</a>
-        <a href="transaction.php" class="btn btn-secondary">transer</a>
+      
         
 
     </div>
