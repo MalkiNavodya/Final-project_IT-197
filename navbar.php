@@ -138,13 +138,12 @@ if (!$user) {
             <a href="#" class="logo-text">Nestly</a>
         </div>
         <ul class="nav-links">
-            <li><a href="home.php">Home</a></li>
+            <li><a href="../../../home.php">Home</a></li>
             <li><a href="../../../about.php">About Us</a></li>
             <li><a href="../../../property.php">Property</a></li>
             <li><a href="../../../contact_agent.php">Agent</a></li>
             <li><a href="../../../map.php">Map</a></li>
-            <li><a href="../../../transaction.php">Transaction</a></li>
-            <li><a href="../../../search_form.php">Search</a></li>
+           
         </ul>
         <div class="right-section">
             <a href="../../../registration.php">Register</a>
