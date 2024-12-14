@@ -5,32 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Real Estate Management</title>
     <style>
-      /* Global Styles */
-      * {
+        /* Global Styles */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            
         }
 
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #FF758C, #FF9B5F);
-            background-image: url('images/home.jpg'); /* Set background image */
+            background-image: url('images/home.jpg');
             color: #333;
             overflow-x: hidden;
             backdrop-filter: blur(30px);
         }
 
-         
-
         .container {
-            width: 80%;
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-        
 
         .header {
             text-align: center;
@@ -66,7 +62,8 @@
             margin-bottom: 20px;
             color: black;
         }
-        .mission p{
+
+        .mission p {
             color: black;
         }
 
@@ -108,7 +105,7 @@
 
         .team-member h3 {
             margin: 10px 0 5px;
-            color: #004d99;
+            color:white;
         }
 
         .footer {
@@ -117,6 +114,60 @@
             text-align: center;
             padding: 20px 0;
             margin-top: 50px;
+        }
+
+        .back-to-home {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #5EB934;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .back-to-home:hover {
+            background: #77E29B;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .mission h2 {
+                font-size: 1.8rem;
+            }
+
+            .team-member {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 0.9rem;
+            }
+
+            .mission h2 {
+                font-size: 1.5rem;
+            }
+
+            .team-member {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -132,7 +183,7 @@
         <section class="mission">
             <div class="container">
                 <h2>Our Mission</h2>
-                <p>At RealEstatePro, we aim to simplify the process of finding, managing, and listing properties. Our platform combines innovative technology with unparalleled expertise to help our clients make informed decisions.</p>
+                <b><p>At RealEstatePro, we aim to simplify the process of finding, managing, and listing properties. Our platform combines innovative technology with unparalleled expertise to help our clients make informed decisions.</p></b>
             </div>
         </section>
 
@@ -143,21 +194,25 @@
                     <div class="team-member">
                         <img src="images/profile.jpg" alt="Kamal Perera">
                         <h3>Kamal Perera</h3>
-                        <p>CEO & Founder</p>
+                        <b><p>CEO & Founder</p></b>
                     </div>
                     <div class="team-member">
                         <img src="images/profile.jpg" alt="Nimali Fernando">
                         <h3>Nimali Fernando</h3>
-                        <p>Head of Marketing</p>
+                        <b><p>Head of Marketing</p></b>
                     </div>
                     <div class="team-member">
                         <img src="images/profile.jpg" alt="Sachintha Jayasuriya">
                         <h3>Sachintha Jayasuriya</h3>
-                        <p>Lead Developer</p>
+                        <b><p>Lead Developer</p></b>
                     </div>
                 </div>
             </div>
         </section>
+
+        <div class="container">
+            <a href="home.php" class="back-to-home">Back to Home</a>
+        </div>
     </main>
 
     <footer class="footer">

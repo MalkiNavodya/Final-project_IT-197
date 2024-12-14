@@ -94,7 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             height: 100vh;
             background-image: url('images/home.jpg');
             backdrop-filter: blur(10px);
-            
         }
 
         .profile-container {
@@ -199,12 +198,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             z-index: -1;
             border-radius: 15px;
         }
+
+        .back-home {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-home a {
+            text-decoration: none;
+            color: #fff;
+            background: #5EB934;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .back-home a:hover {
+            background: #50E400;
+        }
     </style>
 </head>
 <body>
     <div class="profile-container">
         <div class="profile-header">
-            <img src="<?php echo htmlspecialchars($user['profile_picture'] ?: 'uploads/default_profile.jpg') . '?' . time(); ?>" alt="Profile Picture">
+            <img src="<?php echo htmlspecialchars($user['profile_picture'] ?: 'images/default_profile.jpg') . '?' . time(); ?>" alt="Profile Picture">
             <h2><?php echo htmlspecialchars($user['username']); ?></h2>
         </div>
         <div class="profile-details">
@@ -215,7 +233,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Button to toggle form visibility -->
         <button class="gradient-button" onclick="toggleForm()">Edit Profile</button>
-<br><br>
+        <br><br>
+        
         <!-- Edit Profile Form (Initially Hidden) -->
         <form method="POST" enctype="multipart/form-data" id="profileForm" class="hidden-form">
             <h3>Edit Profile</h3>
@@ -240,6 +259,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <button type="submit">Update Profile</button>
         </form>
+
+        <!-- Back to Home Button -->
+        <div class="back-home">
+            <a href="home.php">Back to Home</a>
+        </div>
     </div>
 
     <script>

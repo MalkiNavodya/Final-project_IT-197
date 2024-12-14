@@ -131,28 +131,29 @@ if (!$user) {
         }
     </style>
 </head>
-<body>
+<body id="nestly-navbar-page">
     <nav class="navbar">
         <div class="logo-container">
-            <img src="../../../images/logo.png" alt="Website Logo">
+            <img src="images/logo.png" alt="Website Logo">
             <a href="#" class="logo-text">Nestly</a>
         </div>
         <ul class="nav-links">
-            <li><a href="../../../home.php">Home</a></li>
-            <li><a href="../../../about.php">About Us</a></li>
-            <li><a href="../../../property.php">Property</a></li>
-            <li><a href="../../../contact_agent.php">Agent</a></li>
-            <li><a href="../../../map.php">Map</a></li>
-           
+            <li><a href="">Home</a></li>
+            <li><a href="about.php">About Us</a></li>
+            <li><a href="property.php">Property</a></li>
+            <li><a href="contact_agent.php">Agent</a></li>
+            <li><a href="map.php">Map</a></li>
         </ul>
         <div class="right-section">
-            <a href="../../../registration.php">Register</a>
-            <a href="../../../login.php">Login</a>
-            <a href="../../../profile.php">
-                <img src="<?php echo htmlspecialchars($user['profile_picture'] ?: '../../../images/default_profile.jpg') . '?' . time(); ?>" alt="Profile Icon">
+            <a href="registration.php">Register</a>
+            <a href="login.php">Login</a>
+            <a href="profile.php">
+                <img src="<?php echo htmlspecialchars($user['profile_picture'] ?: 'images/default_profile.jpg') . '?' . time(); ?>" alt="Profile Icon">
             </a>
         </div>
     </nav>
+
+
 
     <?php if (isset($_SESSION['admin_logged_in'])): ?>
         <li><a href="lib/views/dashboard/admin.php">Admin Dashboard</a></li>

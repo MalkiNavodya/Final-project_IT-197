@@ -231,7 +231,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <div class="property-content">
                         <h2><?php echo htmlspecialchars($property['title']); ?></h2>
                         <p><?php echo htmlspecialchars($property['description']); ?></p>
-                        <p>Price: $<?php echo htmlspecialchars($property['price']); ?></p>
+                        <p>Price: LKR <?php echo htmlspecialchars($property['price']); ?></p>
                         <p>Bedrooms: <?php echo htmlspecialchars($property['bedrooms']); ?></p><br>
                         <a href="property_details.php?id=<?php echo $property['id']; ?>" class="view-button">View Details</a>
                     </div>

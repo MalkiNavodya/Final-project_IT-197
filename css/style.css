@@ -789,3 +789,101 @@ body {
 .inquiry-form button:hover {
     background: #219150;
 }
+
+/* Scoped styles for this page only */
+#nestly-navbar-page {
+    font-family: 'Montserrat', sans-serif;
+    background: url('../../../images/home.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+#nestly-navbar-page .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #FF758C, #FF7B76, #FF9B5F, #FF9473, #FCE3DB);
+    background-size: 200% 200%;
+    animation: gradient-animation 5s ease infinite;
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
+    border-radius: 15px;
+    position: fixed; /* Fix the navbar to the top */
+    top: 0; /* Align it to the top */
+    width: 100%; /* Ensure it spans the entire width */
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#nestly-navbar-page .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#nestly-navbar-page .logo-container img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#nestly-navbar-page .logo-container .logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#nestly-navbar-page .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#nestly-navbar-page .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#nestly-navbar-page .nav-links a:hover {
+    color: #FFE6D8;
+    transform: scale(1.1);
+}
+
+#nestly-navbar-page .right-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#nestly-navbar-page .right-section img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+#nestly-navbar-page .right-section a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#nestly-navbar-page .right-section a:hover {
+    color: #FFE6D8;
+}

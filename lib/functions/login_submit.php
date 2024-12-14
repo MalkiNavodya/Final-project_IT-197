@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header("Location: ../../lib/views/dashboard/agent.php");
             } else {
                 // Redirect to User dashboard
-                header("Location: ../../lib/views/dashboard/user.php");
+                header("Location: ../../home.php");
             }
             exit();
         } else {

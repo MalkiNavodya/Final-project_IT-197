@@ -1,3 +1,15 @@
+<?php
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
+    // Redirect to login if the user is not a user
+    header("Location: login.php");
+    exit();
+}
+// Simulate fetching user details (replace with actual database queries if needed)
+$name = $_SESSION['name'] ?? 'Guest'; // Assuming 'name' is stored in the session
+$role = ucfirst($_SESSION['role']);  // Capitalize the first letter of the role (e.g., "User")
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
