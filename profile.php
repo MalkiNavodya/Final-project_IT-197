@@ -262,6 +262,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Back to Home Button -->
         <div class="back-home">
+            <a href="view_saved.php">View saved property</a>
+        </div><br>
+        <div class="back-home">
             <a href="home.php">Back to Home</a>
         </div>
     </div>

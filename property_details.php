@@ -32,11 +32,10 @@ $image_paths = [
     13 => ['images/property_23.jpg', 'images/property13_2.jpg', 'images/property13_3.jpg'],
     14 => ['images/property_24.jpg', 'images/property14_2.jpg', 'images/property14_3.jpg'],
     15 => ['images/property_25.jpg', 'images/property15_2.jpg', 'images/property15_3.jpg'],
-    
-
 ];
 $image_list = $image_paths[$property['id']] ?? ['images/placeholder.jpg'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,43 +44,25 @@ $image_list = $image_paths[$property['id']] ?? ['images/placeholder.jpg'];
     <title><?php echo htmlspecialchars($property['title']); ?> - Property Details</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        
-        /* General reset for body */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: url('images/home.jpg') no-repeat center center fixed; /* Optional background */
-    background-size: cover;
-    color: #333;
-}
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('images/home.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
 
-/* Glassmorphism style for .container */
-.container {
-    background: rgba(255, 255, 255, 0.5); /* Transparent white background */
-    backdrop-filter: blur(10px); /* Blur effect for the content behind */
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+        .container {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: 20px auto;
+        }
 
-
-
-/* Optional text inside the container */
-.container h1 {
-    color: white;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
-
-.container p {
-    color: white;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-
-        /* Header Section */
         header {
             padding: 20px;
             color: #fff;
@@ -101,33 +82,9 @@ body {
             font-weight: bold;
         }
 
-        /* Image Thumbnails Section */
-        .image-thumbnails {
-            display: flex;
-            gap: 10px;
-            margin: 20px;
-            justify-content: center;
-        }
-
-        .image-thumbnails .thumbnail {
-            width: 100px;
-            height: 100px;
-            overflow: hidden;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .image-thumbnails .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Main Image */
         .main-image {
             text-align: center;
-            margin-bottom: 0px;
-            
+            margin-bottom: 20px;
         }
 
         .main-image img {
@@ -136,21 +93,41 @@ body {
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
-        /* Property Details and Contact Form Layout */
+        .image-thumbnails {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .thumbnail {
+            width: 150px;
+            height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .property-container {
             display: grid;
-            grid-template-columns: 60% 35%;
+            grid-template-columns: 2fr 1fr;
             gap: 20px;
             margin: 0 20px;
         }
 
-        .property-details {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        }
-
+        .property-details,
         .contact-form {
             background: rgba(255, 255, 255, 0.7);
             padding: 20px;
@@ -165,12 +142,13 @@ body {
 
         .property-details p {
             margin: 10px 0;
-            color:black;
+            color: black;
         }
 
-        .back-button {
+        .back-button,
+        .save-button {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 10px;
             padding: 12px 20px;
             background: linear-gradient(135deg, #FF758C, #FF9473);
             color: white;
@@ -180,8 +158,16 @@ body {
             transition: background 0.3s ease-in-out;
         }
 
+        .save-button {
+            background: linear-gradient(135deg, #4CAF50, #81C784);
+        }
+
         .back-button:hover {
             background: linear-gradient(135deg, #FF9473, #FF758C);
+        }
+
+        .save-button:hover {
+            background: linear-gradient(135deg, #81C784, #4CAF50);
         }
 
         .contact-form h3 {
@@ -221,104 +207,74 @@ body {
             background: linear-gradient(135deg, #FF9473, #FF758C);
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .property-container {
                 grid-template-columns: 1fr;
             }
 
-            .property-details,
-            .contact-form {
-                margin: 10px 0;
-                flex: 1 0 100%;
+            .image-thumbnails {
+                flex-wrap: wrap;
             }
 
-            .image-thumbnails {
-                flex-direction: column;
+            .thumbnail {
+                width: 120px;
+                height: 80px;
             }
         }
-
-        .save-button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 12px 20px;
-    background: linear-gradient(135deg, #4CAF50, #81C784);
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: background 0.3s ease-in-out;
-}
-
-.save-button:hover {
-    background: linear-gradient(135deg, #81C784, #4CAF50);
-}
-
-        
     </style>
 </head>
 <body>
-    
     <header>
         <h1><?php echo htmlspecialchars($property['title']); ?></h1>
         <p>LKR <?php echo number_format($property['price'], 2); ?></p>
     </header>
     <div class="container">
-    <!-- Main Image Section -->
-    <div class="main-image">
-        <img id="main-image" src="<?php echo htmlspecialchars($image_list[0]); ?>" alt="Main Property Image">
-    </div>
+        <div class="main-image">
+            <img id="main-image" src="<?php echo htmlspecialchars($image_list[0]); ?>" alt="Main Property Image">
+        </div>
 
+        <div class="image-thumbnails">
+            <?php foreach ($image_list as $index => $image): ?>
+                <div class="thumbnail" onclick="changeMainImage('<?php echo $image; ?>')">
+                    <img src="<?php echo htmlspecialchars($image); ?>" alt="Thumbnail <?php echo $index + 1; ?>">
+                </div>
+            <?php endforeach; ?>
+        </div>
 
-    <!-- Image Thumbnails Section -->
-    <div class="image-thumbnails">
-        <?php foreach ($image_list as $index => $image): ?>
-            <div class="thumbnail" onclick="changeMainImage('<?php echo $image; ?>')">
-                <img src="<?php echo htmlspecialchars($image); ?>" alt="Thumbnail <?php echo $index + 1; ?>">
+        <div class="property-container">
+            <div class="property-details">
+                <h2>Property Details</h2>
+                <p><?php echo nl2br(htmlspecialchars($property['description'])); ?></p>
+                <p><strong>Location:</strong> <?php echo htmlspecialchars($property['location']); ?></p>
+                <p><strong>Price:</strong> LKR <?php echo number_format($property['price'], 2); ?></p>
+                <p><strong>Bedrooms:</strong> <?php echo $property['bedrooms']; ?></p>
+                <p><strong>Bathrooms:</strong> <?php echo $property['bathrooms']; ?></p>
+                <p><strong>Size:</strong> <?php echo $property['size']; ?> sq ft</p>
+                <p><strong>Amenities:</strong> <?php echo htmlspecialchars($property['amenities']); ?></p>
+                <a href="property.php" class="back-button">Back to Listings</a>
+                <a href="lib/functions/save_property.php?property_id=<?php echo $property['id']; ?>" class="save-button">Save Property</a>
             </div>
-        <?php endforeach; ?>
-    </div>
 
-    
-    <div class="property-container">
-        <!-- Property Details -->
-        <div class="property-details">
-            <h2>Property Details</h2>
-            <p><?php echo nl2br(htmlspecialchars($property['description'])); ?></p>
-            <p><strong>Location:</strong> <?php echo htmlspecialchars($property['location']); ?></p>
-            <p><strong>Price:</strong> LKR <?php echo number_format($property['price'], 2); ?></p>
-            <p><strong>Bedrooms:</strong> <?php echo $property['bedrooms']; ?></p>
-            <p><strong>Bathrooms:</strong> <?php echo $property['bathrooms']; ?></p>
-            <p><strong>Size:</strong> <?php echo $property['size']; ?> sq ft</p>
-            <p><strong>Amenities:</strong> <?php echo htmlspecialchars($property['amenities']); ?></p>
-            <a href="property.php" class="back-button">Back to Listings</a>
-            <a href="lib/functions/save_property.php?property_id=<?php echo $property['id']; ?>" class="save-button">Save Property</a>
-
+            <div class="contact-form">
+                <h3>Contact Us</h3>
+                <form action="lib/functions/contact_form.php" method="POST">
+                    <input type="hidden" name="property_id" value="<?php echo $property['id']; ?>">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <button type="submit">Send Inquiry</button>
+                </form>
+            </div>
         </div>
-
-        <!-- Contact Form -->
-        <div class="contact-form">
-            <h3>Contact Us</h3>
-            <form action="lib/functions/contact_form.php" method="POST">
-                <input type="hidden" name="property_id" value="<?php echo $property['id']; ?>">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-                <button type="submit">Send Inquiry</button>
-            </form>
-        </div>
-    </div>
     </div>
 
     <script>
-        // JavaScript function to change the main image
         function changeMainImage(imageSrc) {
             document.getElementById('main-image').src = imageSrc;
         }
     </script>
-
 </body>
 </html>

@@ -138,7 +138,7 @@ if (!$user) {
             <a href="#" class="logo-text">Nestly</a>
         </div>
         <ul class="nav-links">
-            <li><a href="">Home</a></li>
+            <li><a href="home.php">Home</a></li>
             <li><a href="about.php">About Us</a></li>
             <li><a href="property.php">Property</a></li>
             <li><a href="contact_agent.php">Agent</a></li>

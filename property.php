@@ -208,6 +208,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     </style>
 </head>
 <body>
+
+
     <div class="hero">
         <h1>Available Properties</h1>
         <p>Find your dream home from our exclusive listings.</p>

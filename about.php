@@ -1,3 +1,6 @@
+
+ <?php include 'navbar.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -172,6 +175,7 @@
     </style>
 </head>
 <body>
+<?php include 'navbar.php'; ?>
     <header class="header">
         <div class="container">
             <h1>About Us</h1>
