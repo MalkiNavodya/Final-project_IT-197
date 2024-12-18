@@ -353,27 +353,11 @@ td {
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <div class="admin-profile">
-            <img src="../../../images/profile.jpg" alt="Admin Profile">
-            <h3>Admin</h3>
-            <p>Administrator</p>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="admin.php">Dashboard</a></li>
-                <li><a href="">Users</a></li>
-                <li><a href="#">Reports</a></li>
-                <li><a href="#">Analytics</a></li>
-                <li><a href="../../../index.php">Log Out</a></li>
-            </ul>
-        </nav>
-    </div>
+  
 
     <!-- Main Content -->
     <div class="content collapsed" id="main-content">
-        <span class="toggle-btn" id="toggle-btn">☰</span>
+        
         <header class="header">
             <h1>Admin Dashboard</h1>
             <a href="../../../index.php"><button class="btn-logout">Log Out</button></a>
@@ -473,17 +457,7 @@ $newSignups = mysqli_fetch_assoc($newSignupsResult)['new_signups'] ?? 0;
         </div>
    
 
-   <!-- JavaScript for Toggle Button -->
-   <script>
-        const toggleBtn = document.getElementById('toggle-btn');
-        const sidebar = document.getElementById('sidebar');
-        const mainContent = document.getElementById('main-content');
-
-        toggleBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            mainContent.classList.toggle('collapsed');
-        });
-    </script>
+ 
 
 <?php
 include('../../functions/db_connection.php'); // Database connection file

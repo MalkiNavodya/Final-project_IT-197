@@ -15,9 +15,25 @@ if (!isset($_SESSION['user_id'])) {
 // Get the logged-in user's ID
 $user_id = $_SESSION['user_id'];
 
+// Handle delete request
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_id'])) {
+    $delete_id = intval($_POST['delete_id']);
+
+    // Delete the saved property from the database
+    $delete_query = "DELETE FROM saved_properties WHERE user_id = '$user_id' AND property_id = '$delete_id'";
+    if (mysqli_query($conn, $delete_query)) {
+        echo "<script>
+                alert('Property removed successfully.');
+                window.location.href = 'view_saved.php';
+              </script>";
+    } else {
+        echo "<script>alert('Error deleting property: " . mysqli_error($conn) . "');</script>";
+    }
+}
+
 // Query to fetch saved properties with property details
 $query = "
-    SELECT sp.saved_at, p.title, p.price, p.location, p.bedrooms, p.bathrooms, p.size
+    SELECT sp.property_id, sp.saved_at, p.title, p.price, p.location, p.bedrooms, p.bathrooms, p.size
     FROM saved_properties AS sp
     JOIN properties AS p ON sp.property_id = p.id
     WHERE sp.user_id = '$user_id'
@@ -48,7 +64,7 @@ if (!$result) {
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background:  url('images/home.jpg');
+            background: url('images/home.jpg');
             backdrop-filter: blur(5px);
             color: #333;
         }
@@ -65,7 +81,7 @@ if (!$result) {
         }
         h2 {
             text-align: center;
-            color:rgb(9, 9, 8);
+            color: rgb(9, 9, 8);
             font-weight: bold;
         }
         table {
@@ -112,6 +128,19 @@ if (!$result) {
             text-align: center;
             color: #FF9473;
         }
+        .delete-btn {
+            background: #FF4A4A;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+        .delete-btn:hover {
+            background: #FF2E2E;
+        }
     </style>
 </head>
 <body>
@@ -132,6 +161,7 @@ if (!$result) {
                     <th>Bathrooms</th>
                     <th>Size (sqft)</th>
                     <th>Saved At</th>
+                    <th>Actions</th>
                 </tr>
                 <?php while ($row = mysqli_fetch_assoc($result)): ?>
                 <tr>
@@ -142,6 +172,12 @@ if (!$result) {
                     <td><?php echo $row['bathrooms']; ?></td>
                     <td><?php echo $row['size']; ?></td>
                     <td><?php echo $row['saved_at']; ?></td>
+                    <td>
+                        <form method="POST" style="margin: 0;">
+                            <input type="hidden" name="delete_id" value="<?php echo $row['property_id']; ?>">
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 <?php endwhile; ?>
             </table>
