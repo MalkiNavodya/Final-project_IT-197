@@ -53,16 +53,16 @@
         <p>or connect with:</p>
 
         <!-- Google Sign-In Button -->
-        <button class="social-btn">
+        <a href="www.google.come"><button class="social-btn">
             <img src="https://www.gstatic.com/images/branding/product/1x/gsa_64dp.png" alt="Google Logo" class="social-icon">
             Continue with Google
-        </button>
+        </button></a>
 
         <!-- Facebook Sign-In Button -->
-        <button class="social-btn">
+        <a href="www.facebook.com"><button class="social-btn">
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
             Continue with Facebook
-        </button>
+        </button></a>
 
         <div class="link-to-home">
             <a href="index.php">Go to Home Page</a><!-- Link to Home Page -->

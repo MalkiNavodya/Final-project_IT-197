@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <style>
+  <style>
           /* General Reset */
           * {
             margin: 0;
@@ -182,7 +182,7 @@
             background: #27ae60;
         }
 
-/* Table Styles */
+ /* Table Styles */
 table {
     width: 90%; /* Adjust the width of the table */
     max-width: 1200px; /* Ensure it doesn't get too wide on large screens */
